@@ -1,0 +1,81 @@
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>{{tieude}} - {{ngay_tao | date:'dd/MM/yyyy'}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+
+            <shop_tim_kiem></shop_tim_kiem>
+
+            <div *ngFor="let san_pham of mang_san_pham; let i = index">
+                <div class="col-md-3 col-sm-6" *ngIf="i < so_san_pham">
+                    <div class="single-shop-product">
+                        <div class="product-upper">
+                            <img [src]=" 'assets/img/san_pham/' + san_pham.hinh " alt="">
+                        </div>
+                        <h2>
+                            <a [routerLink]="'/san-pham/' + san_pham.ma_san_pham">{{san_pham.ten_san_pham | uppercase }}</a>
+                            <!-- <a href="">{{san_pham.ten_san_pham | uppercase }}</a> -->
+                        </h2>
+                        <div class="product-carousel-price">
+                            <ins #gia>{{ san_pham.don_gia | currency:'VND':true }}</ins>
+                        </div>
+
+                        <div class="product-option-shop">
+                            <button class="btn btn-primary" [disabled]="san_pham.trang_thai==0" (click)="themgiohang(san_pham.ma_san_pham)" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow">Mua ngay</button>
+                        </div>
+                        <div class="conhang" *ngIf="san_pham.trang_thai==1; else hethang">
+                            Còn hàng
+                        </div>
+                        <ng-template #hethang>
+                            <div class="hethang">
+                                hết hàng
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <button *ngIf="mang_san_pham.length > so_san_pham" (click)="demsanpham()" class="add_to_cart_button">
+                    Xem thêm sản phẩm
+                </button>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-pagination text-center">
+                    <nav>
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

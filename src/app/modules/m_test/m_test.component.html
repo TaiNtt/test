@@ -1,0 +1,41 @@
+<div class="container">
+    <!--<button type="button" class="btn btn-danger" (click)="demclick()">Mời bạn click</button>
+    {{thongbao}}-->
+
+    <!--<textarea (keyup)="gui_tin_nhan($event)" name="" rows="3" required="required">
+
+    </textarea>
+    <div>
+        {{tin_nhan}}
+    </div>-->
+    <!--<textarea #xem_truoc_mail name="" rows="3" required="required"></textarea>
+
+    <button (click)="xemmail(xem_truoc_mail)" type="button" class="btn btn-success">Xem trước mail</button>
+
+    <div>
+        {{xemtruocmail}}
+    </div>-->
+    <div class="form_chat">
+        <div class="tieu_de" (click)="an_hien()">Hãy chat với chúng tôi</div>
+        <div [@an_hien_m_chat]="hieu_ung">
+            <div class="component_tin_nhan" >
+                <div *ngFor="let tinnhan of danhsachtinnhan">
+                    <div class="thong_tin_tin_nhan">
+                            {{tinnhan}}   
+                    </div>
+                    <div class="thong_tin_tra_loi">
+                        Trả lời {{tinnhan}}  
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                
+            </div>
+            <div class="noi_dung_tin">
+                <textarea (keyup)="xylyenter($event)" #noidungchat ></textarea>
+                <button (click)="xulyclick(noidungchat)" type="button" class="btn btn-success btn_gui_tin_nhan">Gửi tin nhắn</button>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>

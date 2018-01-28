@@ -1,0 +1,40 @@
+<w_menu>
+</w_menu>
+
+<div class="row">
+
+
+    <div *ngFor="let san_pham of mang_san_pham; let i = index">
+        <div class="col-md-3 col-sm-6" *ngIf="i < so_san_pham">
+            <div class="single-shop-product">
+                <div class="product-upper">
+                    <img [src]=" 'assets/img/san_pham/' + san_pham.hinh " alt="">
+                </div>
+                <h2>
+                    <a [routerLink]="'/san-pham/' + san_pham.ma_san_pham">{{san_pham.ten_san_pham | uppercase }}</a>
+                    <!-- <a href="">{{san_pham.ten_san_pham | uppercase }}</a> -->
+                </h2>
+                <div class="product-carousel-price">
+                    <ins #gia>{{ san_pham.don_gia | currency:'VND':true }}</ins>
+                </div>
+
+                <div class="product-option-shop">
+                    <button class="btn btn-primary" [disabled]="san_pham.trang_thai==0" (click)="themgiohang(san_pham.ma_san_pham)" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow">Mua ngay</button>
+                </div>
+                <div class="conhang" *ngIf="san_pham.trang_thai==1; else hethang">
+                    Còn hàng
+                </div>
+                <ng-template #hethang>
+                    <div class="hethang">
+                        hết hàng
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center;">
+        <button *ngIf="mang_san_pham.length > so_san_pham" (click)="demsanpham()" class="add_to_cart_button">
+        Xem thêm sản phẩm
+    </button>
+    </div>
+</div>

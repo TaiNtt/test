@@ -1,0 +1,18 @@
+
+<div *ngIf="!isQuanTri">
+    <w_header></w_header>
+    
+    <!-- <p_trang_chu></p_trang_chu> -->
+    <!--<p_single_product></p_single_product>-->
+    <!-- <p_cart></p_cart> -->
+    <!-- <p_shop></p_shop> -->
+    <!-- <p-register></p-register> -->
+    <!-- <p_checkout></p_checkout> -->
+    <router-outlet></router-outlet>
+    
+    <w_footer></w_footer>
+</div>
+
+<div *ngIf="isQuanTri">
+    <p_admin_temp></p_admin_temp>
+</div>

@@ -1,0 +1,21 @@
+<div class="brands-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="brand-wrapper">
+                    <h2 class="section-title">Brands</h2>
+                    <div class="product-carousel">
+                        <div class="single-product" *ngFor="let thuonghieu of brand_lst">
+                            <div class="product-f-image">
+                                <a [routerLink]="'/category/'+thuonghieu.id_thuong_hieu">
+                                    <img src="assets/img/brand/{{thuonghieu.hinh}}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End brands area -->

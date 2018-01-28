@@ -1,0 +1,79 @@
+<div class="col-2">
+    <form role="form" #form_nguoi_nhan="ngForm">
+
+
+        <div class="woocommerce-shipping-fields">
+            
+            <div class="shipping_address" style="display: block;">
+                <p id="shipping_country_field" class="">
+                    <label class="" for="shipping_country">Country <abbr title="required" class="required">*</abbr>
+            </label>
+                    <select class="country_to_state country_select" id="shipping_country" name="shipping_country" #shipping_country="ngModel" [(ngModel)]="nguoi_dung.quoc_gia_id" required>
+                <option  value="">Select a country…</option>
+                <option  *ngFor="let country of mang_quoc_gia,let i =index"
+                [ngValue]="country"
+                 value="{{country.code}}">{{country.name}}</option></select>
+
+                    <span class="thong_bao_loi" *ngIf="shipping_country.invalid && !shipping_country.pristine">
+                        <div *ngIf="shipping_country.errors.required">
+                          Vui lòng chọn quốc gia!
+                        </div>
+                   </span>
+                </p>
+
+                <p id="shipping_name_field" class="">
+                    <label class="" for="shipping_name">Họ tên <abbr title="required" class="required">*</abbr>
+                    </label>
+                    <input type="text" required id="shipping_name" #shipping_name="ngModel" [(ngModel)]="nguoi_dung.ho_ten" name="shipping_name" class="input-text ">
+                    <span class="thong_bao_loi" *ngIf="shipping_name.invalid && !shipping_name.pristine">
+                      <div *ngIf="shipping_name.errors.required">
+                        Vui lòng nhập họ tên!
+                      </div>
+                    </span>
+                </p>
+
+
+                <div class="clear"></div>
+
+                <p id="shipping_address_field" class="">
+                    <label class="" for="shipping_address">Address
+                      <abbr title="required" class="required">*</abbr>
+            </label>
+                    <input type="text" id="shipping_address" required #shipping_address="ngModel" [(ngModel)]="nguoi_dung.dia_chi" name="shipping_address" class="input-text ">
+                    <span class="thong_bao_loi" *ngIf="shipping_address.invalid && !shipping_address.pristine">
+                        <div *ngIf="shipping_address.errors.required">
+                          Vui lòng nhập địa chỉ!
+                        </div>
+                      </span>
+                </p>
+
+                <div class="clear"></div>
+
+
+                <p id="shipping_phone_field" class="">
+                    <label class="" for="shipping_phone">Điện thoại
+                    <abbr title="required" class="required">*</abbr>
+                  </label>
+                    <input type="text" required pattern="[0-9]+" #shipping_phone="ngModel" [(ngModel)]="nguoi_dung.so_dien_thoai" maxlength="20" id="shipping_phone" name="shipping_phone">
+                    <span class="thong_bao_loi" *ngIf="shipping_phone.invalid &&
+                  !shipping_phone.pristine">
+                    <div *ngIf="shipping_phone.errors.required">
+                      Vui lòng nhập SĐT!
+                    </div>
+                    <div *ngIf="shipping_phone.errors.pattern">
+                      Vui lòng đúng định dạng SĐT!
+                    </div>
+                  </span>
+                </p>
+                <div class="clear"></div>
+
+
+            </div>
+            <p id="order_comments_field" class="form-row notes">
+                <label class="" for="order_comments">Order Notes</label>
+                <textarea cols="5" rows="2" placeholder="Notes about your order, e.g. special notes for delivery." id="order_comments" class="input-text " name="order_comments"></textarea>
+            </p>
+
+        </div>
+    </form>
+</div>

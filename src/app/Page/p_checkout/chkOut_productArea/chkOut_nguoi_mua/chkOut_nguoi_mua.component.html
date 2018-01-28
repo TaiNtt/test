@@ -1,0 +1,117 @@
+<div class="col-1">
+    <form role="form" #form_nguoi_mua="ngForm">
+        <h3 id="ship-to-different-address">
+            <label class="checkbox" for="ship-to-different-address-checkbox">
+              Giao tới địa chỉ khác?</label>
+            <input type="checkbox" #ship_to_different_address (change)="fnClickGiaoDiaChiKhac(ship_to_different_address.checked)" name="ship_to_different_address" [checked]="is_ship_to_different_address" class="input-checkbox">
+        </h3>
+        <div class="woocommerce-billing-fields">
+            <h3>Người mua</h3>
+            <p id="billing_country_field" class="" ng-class="{'valid':country.$valid}">
+                <label class="" for="billing_country">Country
+          <abbr title="required" class="required">*</abbr>
+        </label>
+                <select class="country_to_state country_select" id="billing_country" name="billing_country" #billing_country="ngModel" [(ngModel)]="nguoi_dung.quoc_gia_id" required>
+          <option value="">Select a country…</option>
+
+          <option *ngFor="let country of mang_quoc_gia,let i =index"
+          [ngValue]="country"
+           value="{{country.code}}">{{country.name}}</option>
+        </select>
+                <span class="thong_bao_loi" *ngIf="billing_country.invalid && !billing_country.pristine">
+              <div *ngIf="billing_country.errors.required">
+                Vui lòng chọn quốc gia!
+              </div>
+        </span> {{nguoi_dung.quoc_gia_id}}
+            </p>
+
+            <p id="billing_first_name_field" class="">
+                <label class="" for="billing_first_name">Họ tên
+                 <abbr title="required" class="required">*</abbr>
+              </label>
+                <input type="text" required id="billing_name" #billing_name="ngModel" [(ngModel)]="nguoi_dung.ho_ten" name="billing_name">
+
+                <span class="thong_bao_loi" *ngIf="billing_name.invalid && !billing_name.pristine">
+                  <div *ngIf="billing_name.errors.required">
+                    Vui lòng nhập họ tên!
+                  </div>
+                </span>
+            </p>
+            <div class="clear"></div>
+
+            <p id="billing_address_field" class="">
+                <label class="" for="billing_address">Địa chỉ
+                  <abbr title="required" class="required">*</abbr>
+             </label>
+                <input type="text" required #billing_address="ngModel" [(ngModel)]="nguoi_dung.dia_chi" id="billing_address" name="billing_address">
+
+                <span class="thong_bao_loi" *ngIf="billing_address.invalid && !billing_address.pristine">
+                  <div *ngIf="billing_address.errors.required">
+                    Vui lòng nhập địa chỉ!
+                  </div>
+                </span>
+            </p>
+
+
+            <div class="clear"></div>
+
+            <p id="billing_email_field" class="">
+                <label class="" for="billing_email">Email
+          <abbr title="required" class="required">*</abbr>
+        </label>
+                <input type="text" id="billing_email" required #billing_email="ngModel" [(ngModel)]="nguoi_dung.email" name="billing_email" pattern="[a-zA-Z0-9\.\+_-]+@\S+\.\S+">
+
+                <span class="thong_bao_loi" *ngIf="billing_email.invalid && !billing_email.pristine">
+                  <div *ngIf="billing_email.errors.required">
+                    Vui lòng nhập email!
+                  </div>
+                  <div *ngIf="billing_email.errors.pattern">
+                    Vui lòng đúng định dạng email!
+                  </div>
+                </span>
+            </p>
+
+            <p id="billing_phone_field" class="">
+                <label class="" for="billing_phone">Điện thoại
+          <abbr title="required" class="required">*</abbr>
+        </label>
+                <input type="text" required pattern="[0-9]+" #billing_phone="ngModel" [(ngModel)]="nguoi_dung.so_dien_thoai" maxlength="20" id="billing_phone" name="billing_phone">
+                <span class="thong_bao_loi" *ngIf="billing_phone.invalid && !billing_phone.pristine">
+                  <div *ngIf="billing_phone.errors.required">
+                    Vui lòng nhập SĐT!
+                  </div>
+                  <div *ngIf="billing_phone.errors.pattern">
+                    Vui lòng đúng định dạng SĐT!
+                  </div>
+                </span>
+
+            </p>
+            <div class="clear"></div>
+
+            <p id="shipping_company_field">
+                <label class="" for="shipping_company">Company Name</label>
+                <input type="text" #shipping_company="ngModel" [(ngModel)]="nguoi_dung.ten_cong_ty" id="shipping_company" name="shipping_company">
+            </p>
+            <div class="clear"></div>
+
+            <p id="shipping_mst">
+                <label class="" for="txt_shipping_mst">Mã số thuế</label>
+                <input type="text" #txt_shipping_mst="ngModel" [(ngModel)]="nguoi_dung.ma_so_thue" id="txt_shipping_mst" name="txt_shipping_mst">
+            </p>
+            <div class="clear"></div>
+            <div class="create-account">
+                <p>Đăng ký tài khoản và nhập thông tin mật khẩu phía dưới để xác nhận. Nếu bạn chưa có tài khoản hãy bấm vào đăng ký ở thanh menu trên cùng!.
+                </p>
+                <p id="account_password_field" class="form-row validate-required">
+                    <label class="" for="account_password">Account password
+            <abbr title="required" class="required">*</abbr>
+          </label>
+                    <input type="password" value="" placeholder="Password" id="account_password" name="account_password" class="input-text">
+                </p>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,46 @@
+<w_menu>
+</w_menu>
+
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">Danh sách sản phẩm của thương hiệu {{brand.ten_thuong_hieu}}</h2>
+                    <div class="product-carousel">
+                        <div class="single-product" *ngFor="let san_pham of mang_san_pham_by_brand">
+                            <div class="product-f-image">
+                                <img src="assets/img/san_pham/{{san_pham.hinh}}" alt="">
+                                <div class="product-hover">
+                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    <a href="assets/html/single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                </div>
+                            </div>
+
+                            <h2>
+                                <a [routerLink]="'/san-pham/'+ san_pham.ma_san_pham"> {{san_pham.ten_san_pham}}</a>
+                            </h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{san_pham.don_gia|currency:"VND":true}}</ins>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-menu">
+    <h2>Categories</h2>
+    <ul>
+        <li *ngFor="let loai_sp of ds_loai_san_pham">
+
+            <a [routerLink]="'/'+loai_sp.id_loai_san_pham">{{loai_sp.ten_loai_san_pham}}</a>
+
+        </li>
+
+    </ul>
+</div>

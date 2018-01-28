@@ -1,0 +1,34 @@
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li routerLinkActive="active" (mouseover)="hien_thi_menu_con(menu)" (mouseout)="an_menu_con(menu)" *ngFor="let menu of mang_menu">
+                        <!-- <a href="{{menu.page_url}}" id="{{menu.id_menu}}">{{menu.ten_menu}} </a> -->
+                        <a [routerLink]="menu.page_url" id="{{menu.id_menu}}">{{menu.ten_menu}} </a>
+                        <ul class="item_menu" [@hieu_ung_an_hien_menu_con]="menu.trang_thai">
+                            <li *ngFor="let menu_con of menu.ds_menu_con">
+
+
+                                <a [routerLink]="'/category/'+ menu_con.page_url">
+                                      {{menu_con.ten_menu}}</a>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- <li class="active"><a href="shop.html">Shop page</a></li>
+                        -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End mainmenu area -->
